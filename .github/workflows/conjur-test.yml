@@ -25,7 +25,7 @@ jobs:
           # Replace this placeholder with your actual Conjur Cloud tenant URL
           url: https://anzservices.secretsmgr.cyberark.cloud
           account: conjur
-          authn_id: conjur/authn-jwt/GitHub
+          authn_id: GitHub
           secrets: |
             data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/address|MY_DB_ADDRESS
 
