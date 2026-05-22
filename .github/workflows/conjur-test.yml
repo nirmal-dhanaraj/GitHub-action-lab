@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Fetch Secret From Conjur Cloud
-        uses: cyberark/conjur-action@v1
+        uses: cyberark/conjur-action@v2.1.0
         with:
           # Replace this placeholder with your actual Conjur Cloud tenant URL
           url: https://anzservices.secretsmgr.cyberark.cloud
