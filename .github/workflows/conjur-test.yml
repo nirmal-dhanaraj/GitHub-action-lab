@@ -33,4 +33,4 @@ jobs:
       - name: Verify Secret Fetch
         run: |
           echo "The runner successfully fetched the secret!"
-          echo "GitHub automatically masks secrets in logs: $MY_DB_SECRET"
+          echo "Database address fetched securely: $MY_DB_ADDRESS"
