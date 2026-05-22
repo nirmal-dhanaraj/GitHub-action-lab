@@ -3,14 +3,12 @@ name: Conjur Cloud SaaS Lab
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: # This allows you to manually run the test from the GitHub UI
+  workflow_dispatch: # Allows you to manually run the test from the GitHub UI
 
 jobs:
   conjur-secret-fetch:
-    # This selects the GitHub SaaS cloud runner
     runs-on: ubuntu-latest 
     
-    # REQUIRED: This allows the SaaS runner to request the OIDC JWT token from GitHub
     permissions:
       id-token: write
       contents: read
@@ -22,14 +20,13 @@ jobs:
       - name: Fetch Secret From Conjur Cloud
         uses: cyberark/conjur-action@v2.1.0
         with:
-          # Replace this placeholder with your actual Conjur Cloud tenant URL
           url: https://anzservices.secretsmgr.cyberark.cloud
           account: conjur
           authn_id: GitHub
-          secrets: |
-            data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/address|MY_DB_ADDRESS
+          # CRITICAL FIX: Single-line format prevents invisible newline strings
+          secrets: 'data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/address|MY_DB_ADDRESS'
 
-      # This step lets you check if the runner successfully executed the task
+      # Verify step
       - name: Verify Secret Fetch
         run: |
           echo "The runner successfully fetched the secret!"
