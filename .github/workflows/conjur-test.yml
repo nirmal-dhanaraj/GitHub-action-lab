@@ -27,7 +27,7 @@ jobs:
           account: conjur
           authn_id: github-jwt-authenticator
           secrets: |
-            data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/address;MY_DB_ADDRESS
+            data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/address|MY_DB_ADDRESS
 
       # This step lets you check if the runner successfully executed the task
       - name: Verify Secret Fetch
