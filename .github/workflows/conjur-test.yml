@@ -23,8 +23,8 @@ jobs:
           url: https://anzservices.secretsmgr.cyberark.cloud
           account: conjur
           authn_id: GitHub
-          # CRITICAL FIX: Single-line format prevents invisible newline strings
-          secrets: 'data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/address|MY_DB_ADDRESS'
+          # CHANGED HERE: /address switched to /password
+          secrets: 'data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/password|MY_DB_ADDRESS'
 
       # Verify step
       - name: Verify Secret Fetch
