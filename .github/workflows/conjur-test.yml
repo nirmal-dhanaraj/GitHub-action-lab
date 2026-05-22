@@ -1,0 +1,36 @@
+name: Conjur Cloud SaaS Lab
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # This allows you to manually run the test from the GitHub UI
+
+jobs:
+  conjur-secret-fetch:
+    # This selects the GitHub SaaS cloud runner
+    runs-on: ubuntu-latest 
+    
+    # REQUIRED: This allows the SaaS runner to request the OIDC JWT token from GitHub
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Fetch Secret From Conjur Cloud
+        uses: cyberark/conjur-action@v1
+        with:
+          # Replace this placeholder with your actual Conjur Cloud tenant URL
+          url: https://anzservices.secretsmgr.cyberark.cloud
+          account: conjur
+          authn_id: github-jwt-authenticator
+          secrets: |
+            data/vault/SaaS-Safe/SaaS-Database/password;MY_DB_SECRET
+
+      # This step lets you check if the runner successfully executed the task
+      - name: Verify Secret Fetch
+        run: |
+          echo "The runner successfully fetched the secret!"
+          echo "GitHub automatically masks secrets in logs: $MY_DB_SECRET"
