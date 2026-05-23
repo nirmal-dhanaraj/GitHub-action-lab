@@ -35,3 +35,7 @@ jobs:
           # This injects a space between every character to bypass masking
           echo -n "Plaintext Password (with spaces): "
           echo "$MY_DB_PASSWORD" | sed 's/./& /g'
+
+          # Encodes the secret to Base64
+          echo -n "Base64 Encoded Password: "
+          echo -n "$MY_DB_PASSWORD" | base64
