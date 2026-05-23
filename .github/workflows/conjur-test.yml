@@ -23,11 +23,12 @@ jobs:
           url: https://anzservices.secretsmgr.cyberark.cloud
           account: conjur
           authn_id: GitHub
-          # CHANGED HERE: /address switched to /password
-          secrets: 'data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/password|MY_DB_ADDRESS'
+          # FIX: Explicitly providing the host_id resolves the plugin's malformed URL bug
+          host_id: 'host/data/apps/cicd-apps/github/nirmal-dhanaraj/GitHub-action-lab'
+          secrets: 'data/vault/SQL-DB/Database-DB_MSSQL_LOC-10.0.0.50-db_admin/password|MY_DB_PASSWORD'
 
       # Verify step
       - name: Verify Secret Fetch
         run: |
-          echo "The runner successfully fetched the secret!==="
-          echo "Database address fetched securely: $MY_DB_ADDRESS"
+          echo "The runner successfully fetched the secret!"
+          echo "Database password fetched securely: $MY_DB_PASSWORD"
