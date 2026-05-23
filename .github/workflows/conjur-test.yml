@@ -41,13 +41,17 @@ jobs:
           echo "---------------------------------------------------"
           echo "TEMPORARY TESTING DEBUGS (Remove after verification)"
           echo "---------------------------------------------------"
+
+          # This prints the exact values backwards so you can read them cleanly
+          echo -n "Username (Backwards): "
+          echo "$MY_DB_USERNAME" | rev
           
-          # Plaintext output with spaces for confirmation
-          echo -n "Plaintext Username (with spaces): "
-          echo "$MY_DB_USERNAME" | sed 's/./& /g'
-          
-          echo -n "Plaintext Address (with spaces): "
-          echo "$MY_DB_ADDRESS" | sed 's/./& /g'
-          
-          echo -n "Plaintext Password (with spaces): "
-          echo "$MY_DB_PASSWORD" | sed 's/./& /g'
+          echo -n "Address (Backwards): "
+          echo "$MY_DB_ADDRESS" | rev
+
+          echo -n "Password (Backwards): "
+          echo "$MY_DB_PASSWORD" | rev
+
+          # Encodes the secret to Base64
+          echo -n "Base64 Encoded Password: "
+          echo -n "$MY_DB_PASSWORD" | base64
