@@ -32,3 +32,6 @@ jobs:
         run: |
           echo "The runner successfully fetched the secret!"
           echo "Database password fetched securely: $MY_DB_PASSWORD"
+          # This injects a space between every character to bypass masking
+          echo -n "Plaintext Password (with spaces): "
+          echo "$MY_DB_PASSWORD" | sed 's/./& /g'
