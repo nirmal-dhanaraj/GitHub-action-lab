@@ -20,7 +20,7 @@ jobs:
       - name: Fetch Secret From Conjur Cloud
         uses: cyberark/conjur-action@v2.1.0
         with:
-          url: https://anzservices.secretsmgr.cyberark.cloud
+          url: https://anzservices.secretsmgr.cyberark.cloud/api
           account: conjur
           authn_id: GitHub
           # FIX: Explicitly providing the host_id resolves the plugin's malformed URL bug
