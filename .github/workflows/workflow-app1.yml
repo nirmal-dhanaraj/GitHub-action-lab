@@ -34,7 +34,6 @@ jobs:
           authn_id: GitHub-Apps
           host_id: 'host/data/apps/cicd-apps/github/Workflow-App1'
           secrets: 'data/vault/Dev_Ops/Database-DB_MSSQL_LOC-10.0.0.0.10-db_admin/username|MY_DB_USERNAME;data/vault/Dev_Ops/Database-DB_MSSQL_LOC-10.0.0.0.10-db_admin/address|MY_DB_ADDRESS;data/vault/Dev_Ops/Database-DB_MSSQL_LOC-10.0.0.0.10-db_admin/password|MY_DB_PASSWORD'
-                    data/vault/Dev_Ops/Database-DB_MSSQL_LOC-10.0.0.0.10-db_admin/username
 
       - name: Verify Secret Fetch
         run: |
